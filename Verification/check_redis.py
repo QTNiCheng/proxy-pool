@@ -18,6 +18,7 @@ class db_class(object):
         self.name = config.name
 
     def check_proxy(self):
+        # num = 0
         executor = ThreadPoolExecutor(max_workers=16)
         if sys.version_info.major == 3:
             proxy_list = [key.decode('utf-8') for key in self.__conn.hgetall(self.name).keys()]
@@ -27,11 +28,12 @@ class db_class(object):
             # time.sleep(0.1)
             if executor.submit(check, proxy):
             # if check(proxy):
-                pass
                 logger.debug("可用代理：{}".format(proxy))
             else:
                 logger.info("不可用代理：{}\n从redis中删除".format(proxy))
                 self.__conn.hdel(self.name, proxy)
+                # num = num + 1
+        # logger.info('全部proxy验证完成，共{}条无用代理'.format(num))
 
 
 if __name__ == "__main__":

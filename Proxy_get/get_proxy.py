@@ -104,9 +104,10 @@ class get_proxy(object):
 
 
 def run():
-    t_list = [threading.Thread(target=get_proxy.Proxy_66ip), threading.Thread(target=get_proxy.Proxy_5U),
-              threading.Thread(target=get_proxy.Proxy_kuaidaili), threading.Thread(target=get_proxy.Proxy_manong),
-              threading.Thread(target=get_proxy.Proxy_xici)]
+    t_list = [
+            threading.Thread(target=get_proxy.Proxy_66ip), 
+            threading.Thread(target=get_proxy.Proxy_kuaidaili), threading.Thread(target=get_proxy.Proxy_xici)
+            ] #threading.Thread(target=get_proxy.Proxy_manong),threading.Thread(target=get_proxy.Proxy_5U),
     for t in t_list:
         t.start()
     for t_ in t_list:

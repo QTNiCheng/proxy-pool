@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "Run/main.py", line 5, in <module>
+    from Proxy_get.get_proxy import run as get_proxy
+ModuleNotFoundError: No module named 'Proxy_get'
+Traceback (most recent call last):
+  File "Run/main.py", line 5, in <module>
+    from Proxy_get.get_proxy import run as get_proxy
+ModuleNotFoundError: No module named 'Proxy_get'
+Traceback (most recent call last):
+  File "Run/main.py", line 5, in <module>
+    from Proxy_get.get_proxy import run as get_proxy
+ModuleNotFoundError: No module named 'Proxy_get'

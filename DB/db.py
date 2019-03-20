@@ -2,11 +2,13 @@ import random
 import sys
 import redis
 import time
-
+import logging
 sys.path.append('../')
 import config
 from Verification.proxy_check import check
-
+import logging
+logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class db_class(object):
     def __init__(self):
@@ -16,7 +18,8 @@ class db_class(object):
     def save_proxy(self, proxy):
         time.sleep(0.1)
         if check(proxy):
-            self.__conn.hset(self.name, proxy, 0)
+            logger.info("{}：验证通过，写入redis".format(proxy))
+            self.__conn.hset(self.name, proxy, time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
     def get_proxy(self):
         key = self.__conn.hgetall(name=self.name)
